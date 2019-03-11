@@ -3,7 +3,7 @@
     'name': "Custom Header",
 
     'summary': """
-        This module is develope to customise color of odoo. The process is done under maintance of oodles technologies.The Job is dpne our odoo 	developer.""",
+        This module is develope to customise color of odoo. The process is done under maintance of oodles technologies.The Job is done our odoo 	developer.""",
 
     'description': """
         Change color of default odoo color theme 
