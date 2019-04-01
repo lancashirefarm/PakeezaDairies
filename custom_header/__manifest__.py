@@ -2,10 +2,8 @@
 {
     'name': "Custom Header",
 
-    'summary': """
-        This module is develope to customise the headers color,button's color and highlight the manadotary fields 
-	in odoo default theme. The process is done under maintance of oodles technologies.One of our developes 
-	names as sahil dwivedi has done this Job.""",
+    'summary': """This module is develope to customise the headers color,button's color and highlight the manadotary fields 
+	in odoo default theme. The process is done under maintance of oodles technologies.""",
 
     'description': """
         Change color of default odoo color theme 
