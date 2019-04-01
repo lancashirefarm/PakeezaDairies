@@ -2,9 +2,7 @@
 {
     'name': "Custom login",
 
-    'summary': """
-        This module is develope to customise login page of odoo.The Job is done by odoo developer.
-	One of our developes names as sahil dwivedi has done this Job.""",
+    'summary': """This module is develope to customise login page of odoo.The Job is done by odoo developer.One of our developes names as sahil dwivedi has done this Job.""",
 
     'description': """
         Change login page design of default odoo color theme
