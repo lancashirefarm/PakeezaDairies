@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dev_account_invoice,access_dev_account_invoice,model_dev_account_invoice,base.group_user,1,1,1,1
+access_dev_supply_invoice_line,access_dev_supply_invoice_line,model_dev_supply_invoice_line,base.group_user,1,1,1,1
+access_dev_invoice_line,access_dev_invoice_line,model_dev_invoice_line,base.group_user,1,1,1,1
