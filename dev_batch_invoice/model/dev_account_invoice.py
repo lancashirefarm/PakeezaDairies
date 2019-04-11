@@ -53,7 +53,7 @@ class dev_aco_invoice(models.Model):
     invoice_type = fields.Selection([('cust_invoice','Customer Invoice'),('sup_invoice','Supplier Invoice')],string="Invoice Type", default='cust_invoice' )
 #    company_id = fields.Many2one('res.company', string='Company')  
     company_id = fields.Many2one('res.company', string='Company', default=_get_company_default)  
-    journal_id = fields.Many2one('account.journal', string='Journal',default=_default_journal)
+    journal_id = fields.Many2one('account.journal', string='Journal',default=_default_journal,required=True)
     
     invoice_ids = fields.One2many('dev.invoice.line','invoice_id', string="Invoice" )
     sup_invoice_ids = fields.One2many('dev.supply.invoice.line','supp_invoice_id', string="Invoice1" )
