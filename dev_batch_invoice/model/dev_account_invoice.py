@@ -41,41 +41,41 @@ class dev_aco_invoice(models.Model):
             ('company_id', '=', company_id),
         ]
         return self.env['account.journal'].search(domain, limit=1)
-    
+
     name = fields.Char(string = 'Sequence',readonly=True, default="MASS INV/",required=True)
-        
+
 #    _defaults = {
-#                'name':lambda obj, cr, uid, context: 'MASS INV/',        
+#                'name':lambda obj, cr, uid, context: 'MASS INV/',
 #                }
-    
-    
-    
+
+
+
     invoice_type = fields.Selection([('cust_invoice','Customer Invoice'),('sup_invoice','Supplier Invoice')],string="Invoice Type", default='cust_invoice' )
-#    company_id = fields.Many2one('res.company', string='Company')  
-    company_id = fields.Many2one('res.company', string='Company', default=_get_company_default)  
+#    company_id = fields.Many2one('res.company', string='Company')
+    company_id = fields.Many2one('res.company', string='Company', default=_get_company_default)
     journal_id = fields.Many2one('account.journal', string='Journal',default=_default_journal,required=True)
-    
+
     invoice_ids = fields.One2many('dev.invoice.line','invoice_id', string="Invoice" )
     sup_invoice_ids = fields.One2many('dev.supply.invoice.line','supp_invoice_id', string="Invoice1" )
 
     state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirm'),('invoice', 'Invoiced')], string='State', default='draft')
     account_invoice_ids=fields.Many2many('account.invoice',string="Invoices")
-    
-    
+
+
 #    def create(self, cr, uid, vals, context=None):
 #        if vals.get('sequence','/') == '/':
 #            vals['name']=self.pool.get('ir.sequence').get(cr,uid,'dev.account.invoice') or '/'
 #        res=super(account_invoice, self).create(cr, uid, vals, context=context)
 #        return res
-        
+
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code(
             'dev.account.invoice') or 'MASS INV/'
         result = super(dev_aco_invoice, self).create(vals)
         return result
-        
-    
+
+
     @api.multi
     def action_invoice(self):
         invoice=[]
@@ -98,7 +98,7 @@ class dev_aco_invoice(models.Model):
                     'invoice_id':account_obj.id,
                     }
                 account_line =  self.env['account.invoice.line'].create(res)
-                
+
         if self.invoice_type == 'sup_invoice':
             for sup_invoice_id in self.sup_invoice_ids:
                 res={
@@ -123,17 +123,17 @@ class dev_aco_invoice(models.Model):
         self.account_invoice_ids=[(6, 0, invoice)]
         self.write({'state': 'invoice'})
         return True
-    	
+
     @api.multi
     def action_confirm(self):
         self.write({'state': 'confirm'})
         return True
-    
+
     @api.multi
     def action_view_invoice(self):
         invoice_ids = self.mapped('account_invoice_ids')
         imd = self.env['ir.model.data']
-        action = imd.xmlid_to_object('account.ac11111tion_invoice_tree1')
+        action = imd.xmlid_to_object('account.action_invoice_tree')
         list_view_id = imd.xmlid_to_res_id('account.invoice_tree')
         form_view_id = imd.xmlid_to_res_id('account.invoice_form')
 
@@ -154,11 +154,11 @@ class dev_aco_invoice(models.Model):
         else:
             result = {'type': 'ir.actions.act_window_close'}
         return result
-        
+
 class dev_account_invoice(models.Model):
     _name='dev.invoice.line'
     _description = "Invoice2"
-    
+
     invoice_id = fields.Many2one('dev.account.invoice', string="Invoice" )
     partner_id = fields.Many2one('res.partner',string="Partner", required=True)
     description = fields.Char(string="Description", required=True)
@@ -166,9 +166,9 @@ class dev_account_invoice(models.Model):
     uom_id = fields.Many2one('uom.uom',string="UOM", required=True)
     account_id = fields.Many2one('account.account',string="Account", required=True)
     amount = fields.Float(string="Amount", required=True)
-    
-    
-    
+
+
+
 class dev_account_invoice(models.Model):
     _name='dev.supply.invoice.line'
     _description = "Invoice3"
@@ -182,9 +182,3 @@ class dev_account_invoice(models.Model):
     uom_id = fields.Many2one('uom.uom',string="UOM", required=True)
     account_id = fields.Many2one('account.account',string="Account", required=True)
     amount = fields.Float(string="Amount", required=True)
-    
-    
-    
-
-    
-	
