@@ -7,6 +7,6 @@
     'category': 'Stock',
     'version': '0.1',
     'depends': ['base', 'stock', ],
-    'data': ['stock.picking.custom.xml',],
+    'data': ['views/stock.picking.custom.xml',],
     'demo': ['demo/demo.xml',],
 }
