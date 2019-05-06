@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <record id="custom_mrp_product_produce" model="ir.ui.view">
+        <record id="custom_mrp_product_produce_button2" model="ir.ui.view">
             <field name="name">custom_mrp.produce</field>
             <field name="model">mrp.production</field>
             <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
@@ -8,11 +8,11 @@
                 <xpath expr="/form/header/button[@name='open_produce_product']" position="replace">
                     <button name="custom_open_produce_product"
                             attrs="{'invisible': ['|', '|', '|', '|', ('is_locked', '=', False), ('check_to_done', '=', True), ('availability', 'not in', ['partially_available', 'assigned']), ('state', 'not in', ('confirmed','progress')), ('routing_id', '!=', False)]}"
-                            string="Produce1" type="object" class="oe_highlight"/>
+                            string="Produce" type="object" class="oe_highlight"/>
                 </xpath>
             </field>
         </record>
-        <record id="custom1_mrp_product_produce" model="ir.ui.view">
+        <record id="custom_mrp_product_produce_button1" model="ir.ui.view">
             <field name="name">custom_mrp.produce1</field>
             <field name="model">mrp.production</field>
             <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
@@ -20,7 +20,7 @@
                 <xpath expr="/form/header/button[@name='open_produce_product']" position="replace">
                     <button name="custom_open_produce_product"
                             attrs="{'invisible': ['|', '|', '|', '|', ('is_locked', '=', False), ('check_to_done', '=', True), ('availability', '!=', 'waiting'), ('state', 'not in', ('confirmed','progress')), ('routing_id', '!=', False)]}"
-                            string="Produce2" type="object"/>
+                            string="Produce" type="object"/>
                 </xpath>
             </field>
         </record>
