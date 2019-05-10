@@ -10,9 +10,6 @@
                             attrs="{'invisible': ['|', ('state', 'in', ('waiting','confirmed')), ('show_validate', '=', False)]}"
                             string="Validate" type="object" class="oe_highlight"
                             groups="stock.group_stock_user"/>
-                    <button name="cutom_button_validate"
-                            attrs="{'invisible': ['|', ('state', 'not in', ('waiting', 'confirmed')), ('show_validate', '=', False)]}"
-                            string="Validate" type="object" groups="stock.group_stock_user" class="o_btn_validate"/>
                 </xpath>
             </field>
         </record>
